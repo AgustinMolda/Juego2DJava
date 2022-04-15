@@ -25,7 +25,12 @@ public class JuegoRol2D extends Canvas implements Runnable {
     
     private static volatile boolean enFuncionamiento= false;
     
+    private static int aps = 0;
+    private static int fps = 0;
+    
     private static final String NOMBRE = "Juego";
+    
+    
     private JuegoRol2D(){
         setPreferredSize(new Dimension(ANCHO,ALTO));
         ventana  = new JFrame(NOMBRE);
@@ -62,10 +67,50 @@ public class JuegoRol2D extends Canvas implements Runnable {
         }
     }
    
+    private void actualizar(){
+        aps++;
+    }
+    
+    private void mostrar(){
+        fps ++;
+    }
+    
     public void run() {
+      final int NS_POR_SEGUNDO = 1000000000;
+      final byte APS_OBJETIVO = 60;
+      final double NS_POR_ACTUALIZACION = NS_POR_SEGUNDO / APS_OBJETIVO;
+      
+      long referenciaAcutalizacion = System.nanoTime();
+      long referenciaContador = System.nanoTime();
+      double  tiempoTranscurrido;
+      double  delta = 0;
+      
+      
       
       while(enFuncionamiento ){
+          final long inicioBucle = System.nanoTime();
           
+          tiempoTranscurrido = inicioBucle - referenciaAcutalizacion;
+          referenciaAcutalizacion = inicioBucle;
+          
+          
+          delta+= tiempoTranscurrido/NS_POR_ACTUALIZACION;
+          
+          while(delta >= 1){
+              actualizar();
+              delta --;
+          }
+          
+       
+         mostrar();
+          
+         if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO){
+             ventana.setTitle(NOMBRE + " || APS: "+aps + " || FPS: "+ fps);
+             aps = 0;
+             fps = 0;
+             referenciaContador = System.nanoTime();
+         }
+         
         
       }
     }
