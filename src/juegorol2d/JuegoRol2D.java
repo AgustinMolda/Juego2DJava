@@ -5,17 +5,37 @@
  */
 package juegorol2d;
 
+import java.awt.BorderLayout;
+import java.awt.Canvas;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+
 /**
  *
  * @author Eber
  */
-public class JuegoRol2D {
+public class JuegoRol2D extends Canvas {
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+    private static JFrame ventana;
+    private static final int ANCHO = 800;
+    private static final int ALTO = 600;
+    
+    private static final String NOMBRE = "Juego";
+    private JuegoRol2D(){
+        setPreferredSize(new Dimension(ANCHO,ALTO));
+        ventana  = new JFrame(NOMBRE);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setResizable(false);
+        ventana.setLayout(new BorderLayout());
+        ventana.add(this, BorderLayout.CENTER);
+        ventana.pack();
+        ventana.setLocationRelativeTo(null);
+        ventana.setVisible(true);
+        
+        
     }
     
+    public static void main(String[] args){
+          JuegoRol2D juego = new JuegoRol2D();   
+        }
 }
