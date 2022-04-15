@@ -14,9 +14,10 @@ import javax.swing.JFrame;
  *
  * @author Eber
  */
-public class JuegoRol2D extends Canvas {
+public class JuegoRol2D extends Canvas implements Runnable {
 
     private static JFrame ventana;
+    private static Thread thread;
     private static final int ANCHO = 800;
     private static final int ALTO = 600;
     
@@ -36,6 +37,22 @@ public class JuegoRol2D extends Canvas {
     }
     
     public static void main(String[] args){
-          JuegoRol2D juego = new JuegoRol2D();   
+          JuegoRol2D juego = new JuegoRol2D();
+          juego.iniciar();
         }
+
+    
+    private void iniciar(){
+        thread = new Thread(this, "Graficos");
+        thread.start();
+    }
+    
+    private void detener(){
+        
+    }
+   
+    public void run() {
+       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("El thread funca con exito");
+    }
 }
