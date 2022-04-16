@@ -5,6 +5,7 @@
  */
 package juegorol2d;
 
+import control.Teclado;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Dimension;
@@ -20,6 +21,8 @@ public class JuegoRol2D extends Canvas implements Runnable {
 
     private static JFrame ventana;
     private static Thread thread;
+    private static Teclado teclado;
+    
     private static final int ANCHO = 800;
     private static final int ALTO = 600;
     
@@ -32,6 +35,9 @@ public class JuegoRol2D extends Canvas implements Runnable {
     
     
     private JuegoRol2D(){
+        teclado = new Teclado();
+        addKeyListener(teclado);
+        
         setPreferredSize(new Dimension(ANCHO,ALTO));
         ventana  = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,6 +74,21 @@ public class JuegoRol2D extends Canvas implements Runnable {
     }
    
     private void actualizar(){
+        teclado.actualizar();
+        
+        if(teclado.arriba){
+            System.out.println("arriba");
+        }
+        
+        if(teclado.abajo){
+            System.out.println("abajo");
+        }
+        if(teclado.izquierda){
+            System.out.println("izquierda");
+        }
+        if(teclado.derecha){
+            System.out.println("derecha");
+        }
         aps++;
     }
     
@@ -85,6 +106,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
       double  tiempoTranscurrido;
       double  delta = 0;
       
+      requestFocus();
       
       
       while(enFuncionamiento ){
