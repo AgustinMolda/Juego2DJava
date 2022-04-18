@@ -16,6 +16,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 /**
@@ -45,6 +46,8 @@ public class JuegoRol2D extends Canvas implements Runnable {
     
     private static int[] pixeles = ((DataBufferInt)imagen.getRaster().getDataBuffer()).getData();
     
+    private static final ImageIcon icono = new ImageIcon(JuegoRol2D.class.getResource("/Icono/Icono.png"));
+    
     private static final String NOMBRE = "Juego";
     
     
@@ -56,6 +59,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
         ventana  = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventana.setResizable(false);
+        ventana.setIconImage(icono.getImage());
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
         ventana.pack();
