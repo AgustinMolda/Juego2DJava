@@ -5,6 +5,8 @@
  */
 package graficos;
 
+import mapa.cuadro.Cuadro;
+
 /**
  *
  * @author Eber
@@ -36,7 +38,7 @@ public final class Pantalla {
             }
             
         }
-        
+        //Temporal
         public void mostrar(final int compensacionX, final int compansacionY){
             
             for(int y = 0;y<alto;y++){
@@ -57,6 +59,22 @@ public final class Pantalla {
                 }
             }
         
+        }
+        //fin temporal
+        
+        public void mostrarCuadro(int compensacionX, int compensacionY,Cuadro cuadro){
+            for(int y =0; y< cuadro.sprite.get_lado();y++){
+                int posicionY = y + compensacionY;
+                for(int x = 0; x <cuadro.sprite.get_lado();x++){
+                    int posicionX = x + compensacionX;
+                    if(posicionX<0 || posicionX > ancho || posicionY <0 || posicionY > alto){
+                            break;
+                    }
+                    
+                    pixeles[posicionX + posicionY * ancho] = cuadro.sprite.pixeles[x +y *cuadro.sprite.get_lado()];
+                }
+            }
+            
         }
         
         

@@ -45,4 +45,8 @@ public final class Sprite {
     
     }
     
+    public int get_lado(){
+        return lado;
+    }
+    
 }
