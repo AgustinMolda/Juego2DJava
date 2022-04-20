@@ -5,6 +5,8 @@
         <group>
             <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/juegorol2d/JuegoRol2D.java</file>
             <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/graficos/Pantalla.java</file>
+            <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/mapa/cuadro/Cuadro.java</file>
+            <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/mapa/cuadro/CuadroAsfalto.java</file>
             <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/graficos/HojaSprites.java</file>
             <file>file:/C:/Users/Eber/Documents/NetBeansProjects/JuegoRol2D/src/graficos/Sprite.java</file>
         </group>
