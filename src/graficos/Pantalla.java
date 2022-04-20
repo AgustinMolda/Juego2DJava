@@ -60,6 +60,7 @@ public final class Pantalla {
             }
         
         }
+
         //fin temporal
         
         public void mostrarCuadro(int compensacionX, int compensacionY,Cuadro cuadro){
@@ -77,5 +78,13 @@ public final class Pantalla {
             
         }
         
+
+        public int get_ancho(){
+            return ancho;
+        }
+        public int get_alto(){
+            return alto;
+        }
+
         
 }
