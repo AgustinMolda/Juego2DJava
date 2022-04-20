@@ -58,6 +58,11 @@ public final class Pantalla {
             }
         
         }
-        
+        public int get_ancho(){
+            return ancho;
+        }
+        public int get_alto(){
+            return alto;
+        }
         
 }

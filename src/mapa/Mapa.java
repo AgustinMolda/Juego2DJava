@@ -46,7 +46,11 @@ public abstract class Mapa {
     }
     
     public void mostrar(int compensacionX, int compensacionY, Pantalla pantalla){
-    
+        int oeste = compensacionX >>5; // /32
+        int este = (compensacionX + pantalla.get_ancho())>>5;
+        int norte = compensacionY >>5; 
+        int sur = (compensacionY + pantalla.get_alto())>>5;
+        
         
     }
 }
