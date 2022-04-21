@@ -19,7 +19,8 @@ public abstract class Cuadro {
     public Sprite sprite;
     
     //Coleccion de cuadros
-        public static final Cuadro asfalto = new CuadroAsfalto(Sprite.ASFALTO);
+        public static final Cuadro VACIO =  new CuadroVacio(Sprite.VACIO);
+        public static final Cuadro ASFALTO = new CuadroAsfalto(Sprite.ASFALTO);
         
     //fin de la coleccion de cuadros
     

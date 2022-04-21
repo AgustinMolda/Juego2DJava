@@ -6,6 +6,7 @@
 package mapa;
 
 import graficos.Pantalla;
+import mapa.cuadro.Cuadro;
 
 /**
  *
@@ -45,11 +46,25 @@ public abstract class Mapa {
     
     }
     
-    public void mostrar(int compensacionX, int compensacionY, Pantalla pantalla){
+    public void mostrar(final int compensacionX, final int compensacionY, Pantalla pantalla){
         int oeste = compensacionX >>5; // /32
         int este = (compensacionX + pantalla.get_ancho())>>5;
         int norte = compensacionY >>5; 
         int sur = (compensacionY + pantalla.get_alto())>>5;
+        
+        
+    }
+    
+    public Cuadro get_cuadro(final int x,final int y){
+        switch(cuadros[x+y *ancho]){
+            case 0:
+                return Cuadro.ASFALTO;
+                
+                
+            default:
+                return null;
+            
+        }
         
         
     }
