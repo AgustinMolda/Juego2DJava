@@ -17,11 +17,15 @@ public final class Pantalla {
     
     public final int[] pixeles;
     
+    private int diferenciaX;
+    private int diferenciaY;
+    
+    /*
     //Temporales
         private final static int LADO_SPRITE = 32;
         private final static int MASCARA_SPRITE = LADO_SPRITE -1;
     //Fin temporal
-    
+    */
     
     public Pantalla(final int ancho, final int alto){
         this.ancho = ancho;
@@ -38,7 +42,14 @@ public final class Pantalla {
             }
             
         }
-        //Temporal
+        
+        public void estanlece_diferencia( final int diferenciaX,final int diferenciaY){
+            this.diferenciaX = diferenciaX;
+            this.diferenciaY = diferenciaY;
+        }
+   
+        
+   /*    //Temporal
         public void mostrar(final int compensacionX, final int compansacionY){
             
             for(int y = 0;y<alto;y++){
@@ -61,9 +72,13 @@ public final class Pantalla {
         
         }
 
-        //fin temporal
+        //fin temporal*/
+        
+        
         
         public void mostrarCuadro(int compensacionX, int compensacionY,Cuadro cuadro){
+            compensacionX -= diferenciaX;
+            compensacionY -= diferenciaY;
             for(int y =0; y< cuadro.sprite.get_lado();y++){
                 int posicionY = y + compensacionY;
                 for(int x = 0; x <cuadro.sprite.get_lado();x++){

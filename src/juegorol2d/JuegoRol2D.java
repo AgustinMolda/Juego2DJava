@@ -18,6 +18,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import mapa.Mapa;
+import mapa.MapaGenerado;
 
 /**
  *
@@ -42,6 +44,8 @@ public class JuegoRol2D extends Canvas implements Runnable {
     
     private static Pantalla pantalla;
     
+    private static Mapa mapa;
+    
     private static BufferedImage imagen = new BufferedImage(ANCHO,ALTO,BufferedImage.TYPE_INT_RGB);
     
     private static int[] pixeles = ((DataBufferInt)imagen.getRaster().getDataBuffer()).getData();
@@ -55,6 +59,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
         teclado = new Teclado();
         addKeyListener(teclado);
         pantalla = new Pantalla(ANCHO,ALTO);
+        mapa = new MapaGenerado(128,128);
         setPreferredSize(new Dimension(ANCHO,ALTO));
         ventana  = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,17 +100,17 @@ public class JuegoRol2D extends Canvas implements Runnable {
         teclado.actualizar();
         
         if(teclado.arriba){
-            y++;
+            y--;
         }
         
         if(teclado.abajo){
-            y--;
+            y++;
         }
         if(teclado.izquierda){
-            x++;
+            x--;
         }
         if(teclado.derecha){
-           x--;
+           x++;
         }
         aps++;
     }
@@ -119,7 +124,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
         }
         
         pantalla.limpiar();
-        pantalla.mostrar(x, y);
+        mapa.mostrar(x, y, pantalla);
         
         System.arraycopy(pantalla.pixeles,0, pixeles, 0, pixeles.length);
         
