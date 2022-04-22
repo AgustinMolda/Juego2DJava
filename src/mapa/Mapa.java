@@ -51,9 +51,9 @@ public abstract class Mapa {
         pantalla.estanlece_diferencia(compensacionX, compensacionY);
         
         int oeste = compensacionX >>5; // /32
-        int este = (compensacionX + pantalla.get_ancho())>>5;
+        int este = (compensacionX + pantalla.get_ancho()+ Cuadro.LADO)>>5;
         int norte = compensacionY >>5; 
-        int sur = (compensacionY + pantalla.get_alto())>>5;
+        int sur = (compensacionY + pantalla.get_alto() + Cuadro.LADO)>>5;
         
         for(int y = norte; y<sur;y++){
             for(int x = oeste;x<este;x++){
@@ -63,6 +63,9 @@ public abstract class Mapa {
     }
     
     public Cuadro get_cuadro(final int x,final int y){
+        if(x <0 || y<0 || x >= ancho || y >= alto ){
+            return Cuadro.VACIO;
+        }
         switch(cuadros[x+y *ancho]){
             case 0:
                 return Cuadro.ASFALTO;
