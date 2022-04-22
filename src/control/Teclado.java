@@ -22,6 +22,9 @@ public final class Teclado implements KeyListener{
    public boolean arriba;
    public boolean derecha;
    public boolean izquierda;
+   
+   
+   public boolean salir;
     
    
    public void actualizar(){
@@ -29,6 +32,7 @@ public final class Teclado implements KeyListener{
        abajo = teclas[KeyEvent.VK_S];
        izquierda  = teclas[KeyEvent.VK_A];
        derecha = teclas[KeyEvent.VK_D];
+       salir = teclas[KeyEvent.VK_ESCAPE];
    }
     
     public void keyTyped(KeyEvent e) {

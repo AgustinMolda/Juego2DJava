@@ -9,6 +9,7 @@ import control.Teclado;
 import graficos.Pantalla;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
@@ -52,7 +53,12 @@ public class JuegoRol2D extends Canvas implements Runnable {
     
     private static final ImageIcon icono = new ImageIcon(JuegoRol2D.class.getResource("/Icono/Icono.png"));
     
-    private static final String NOMBRE = "Juego";
+    private static final String NOMBRE = "Atomic_Disaster";
+    
+    
+    private static String contadorAPS = "";
+    private static String contadoFPS = "";
+    
     
     
     private JuegoRol2D(){
@@ -67,6 +73,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
         ventana.setIconImage(icono.getImage());
         ventana.setLayout(new BorderLayout());
         ventana.add(this, BorderLayout.CENTER);
+        ventana.setUndecorated(true);
         ventana.pack();
         ventana.setLocationRelativeTo(null);
         ventana.setVisible(true);
@@ -112,8 +119,13 @@ public class JuegoRol2D extends Canvas implements Runnable {
         if(teclado.derecha){
            x++;
         }
+        if(teclado.salir){
+            System.exit(0);
+        }
+        
         aps++;
     }
+    
     
     private void mostrar(){
         BufferStrategy estrategia = getBufferStrategy();
@@ -138,6 +150,9 @@ public class JuegoRol2D extends Canvas implements Runnable {
         Graphics g = estrategia.getDrawGraphics();
         
         g.drawImage(imagen, 0, 0, getWidth(),getHeight(),null);
+        g.setColor(Color.WHITE);
+        g.drawString(contadorAPS, 10, 20);
+        g.drawString(contadoFPS, 10, 35);
         g.dispose();
         
         estrategia.show();
@@ -176,7 +191,8 @@ public class JuegoRol2D extends Canvas implements Runnable {
          mostrar();
           
          if(System.nanoTime() - referenciaContador > NS_POR_SEGUNDO){
-             ventana.setTitle(NOMBRE + " || APS: "+aps + " || FPS: "+ fps);
+            contadorAPS = "APS: " +aps;
+            contadoFPS = "FPS: " + fps;
              aps = 0;
              fps = 0;
              referenciaContador = System.nanoTime();
