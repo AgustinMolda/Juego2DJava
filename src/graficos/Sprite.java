@@ -21,8 +21,10 @@ public final class Sprite {
     
     
     //Coleccion de sprites
-        public static final Sprite ASFALTO = new Sprite(32,0,0,HojaSprites.desierto);
+        public static final Sprite PASTO = new Sprite(32,0,0,HojaSprites.desierto);
         public static final Sprite VACIO = new Sprite(32,0);
+        public static final Sprite AGUA = new Sprite(32,0,1,HojaSprites.desierto);
+        
     
     //fin de la coleccion
     

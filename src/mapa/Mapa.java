@@ -68,7 +68,9 @@ public abstract class Mapa {
         }
         switch(cuadros[x+y *ancho]){
             case 0:
-                return Cuadro.ASFALTO;
+                return Cuadro.PASTO;
+            case 1: 
+                return Cuadro.AGUA;
                 
                 
             default:

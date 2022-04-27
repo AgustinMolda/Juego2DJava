@@ -12,7 +12,7 @@ import graficos.Sprite;
  *
  * @author Eber
  */
-public abstract class Cuadro {
+public  class Cuadro {
     public int x;
     public int y;
     
@@ -22,9 +22,9 @@ public abstract class Cuadro {
     
     
     //Coleccion de cuadros
-        public static final Cuadro VACIO =  new CuadroVacio(Sprite.VACIO);
-        public static final Cuadro ASFALTO = new CuadroAsfalto(Sprite.ASFALTO);
-        
+        public static final Cuadro VACIO =  new Cuadro(Sprite.VACIO);
+        public static final Cuadro PASTO = new Cuadro(Sprite.PASTO);
+        public static final Cuadro AGUA = new Cuadro(Sprite.AGUA);
     //fin de la coleccion de cuadros
     
     
