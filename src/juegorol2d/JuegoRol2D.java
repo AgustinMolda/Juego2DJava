@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import mapa.Mapa;
+import mapa.MapaCargado;
 import mapa.MapaGenerado;
 
 /**
@@ -65,7 +66,9 @@ public class JuegoRol2D extends Canvas implements Runnable {
         teclado = new Teclado();
         addKeyListener(teclado);
         pantalla = new Pantalla(ANCHO,ALTO);
-        mapa = new MapaGenerado(128,128);
+       // mapa = new MapaGenerado(128,128);
+       mapa = new MapaCargado("/mapas/MapaSprites1.png");
+       
         setPreferredSize(new Dimension(ANCHO,ALTO));
         ventana  = new JFrame(NOMBRE);
         ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -135,7 +138,7 @@ public class JuegoRol2D extends Canvas implements Runnable {
             return;
         }
         
-        pantalla.limpiar();
+        //pantalla.limpiar();
         mapa.mostrar(x, y, pantalla);
         
         System.arraycopy(pantalla.pixeles,0, pixeles, 0, pixeles.length);

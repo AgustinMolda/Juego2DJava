@@ -21,14 +21,14 @@ public final class Sprite {
     
     
     //Coleccion de sprites
-        public static final Sprite PASTO = new Sprite(32,0,0,HojaSprites.desierto);
+        public static final Sprite PASTO = new Sprite(32,0,0,0,HojaSprites.desierto);
         public static final Sprite VACIO = new Sprite(32,0);
-        public static final Sprite AGUA = new Sprite(32,0,1,HojaSprites.desierto);
+        public static final Sprite AGUA = new Sprite(32,0,1,0,HojaSprites.desierto);
         
     
     //fin de la coleccion
     
-    public Sprite(int lado, final int columna,final int fila,final HojaSprites hoja){
+    public Sprite(int lado, final int columna,final int fila,final int version,final HojaSprites hoja){
         this.lado = lado;
         
         pixeles = new int[lado * lado];
@@ -37,12 +37,8 @@ public final class Sprite {
         this.x = columna * lado;
         this.y = fila * lado;
         
-        for(int y=0;y<lado;y++){
-            for(int x = 0; x<lado; x++){
-                pixeles[x + y * lado] = hoja.pixeles[(x + this.x) + (y + this.y) * hoja.get_ancho()];
-            }
-        }
-        
+      
+        cargarSprite(version);
         
         
     
@@ -59,5 +55,23 @@ public final class Sprite {
     public int get_lado(){
         return lado;
     }
+    
+    private void cargarSprite(int version){
+        if(version == 0){
+            cargaNormal();
+        }else{
+            
+        }
+    }
+    
+    private void cargaNormal(){
+         for(int y=0;y<lado;y++){
+            for(int x = 0; x<lado; x++){
+                pixeles[x + y * lado] = hoja.pixeles[(x + this.x) + (y + this.y) * hoja.get_ancho()];
+            }
+        }
+     }
+    
+    
     
 }
